@@ -7,25 +7,25 @@ const SquareDetail = ({ titleText, colorState, setColorState }) => {
     //console.log(props);
 
     useEffect(() => {
-        console.log('Color State Updated:' + titleText, colorState);
+        //console.log('Color State Updated:' + titleText, colorState);
     }, [colorState]);
 
-    const doIncrements = (num) => {
+    const doIncrements = (num, multiplier = 10) => {
         let numToReturn;
-        if (num > 250) {
+        if (num > (255 - multiplier) ) {
             numToReturn = 1;
         } else {
-            numToReturn = Math.floor(Math.random() * 5) + 1;
+            numToReturn = Math.floor(Math.random() * multiplier) + 1;
         }
         return numToReturn;
     }
 
-    const doDecrements = (num) => {
+    const doDecrements = (num, multiplier = 10) => {
         let numToReturn;
-        if (num < 5) {
+        if (num < multiplier) {
             numToReturn = 1;
         } else {
-            numToReturn = Math.floor(Math.random() * 5) + 1;
+            numToReturn = Math.floor(Math.random() * multiplier) + 1;
         }
         return numToReturn;
     }
