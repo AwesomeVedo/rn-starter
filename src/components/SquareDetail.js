@@ -10,24 +10,48 @@ const SquareDetail = ({ titleText, colorState, setColorState }) => {
         //console.log('Color State Updated:' + titleText, colorState);
     }, [colorState]);
 
-    const doIncrements = (num, multiplier = 10) => {
-        let numToReturn;
-        if (num > (255 - multiplier) ) {
-            numToReturn = 1;
-        } else {
-            numToReturn = Math.floor(Math.random() * multiplier) + 1;
-        }
-        return numToReturn;
-    }
+    // const doIncrements = (num, multiplier = 15) => {
+    //     let numToReturn;
+    //     if (num > (255 - multiplier)) {
+    //         numToReturn = 1;
+    //     } else {
+    //         numToReturn = Math.floor(Math.random() * multiplier) + 1;
+    //     }
+    //     return numToReturn;
+    // }
 
-    const doDecrements = (num, multiplier = 10) => {
-        let numToReturn;
-        if (num < multiplier) {
-            numToReturn = 1;
-        } else {
-            numToReturn = Math.floor(Math.random() * multiplier) + 1;
+    // const doDecrements = (num, multiplier = 15) => {
+    //     let numToReturn;
+    //     if (num < multiplier) {
+    //         numToReturn = 1;
+    //     } else {
+    //         numToReturn = Math.floor(Math.random() * multiplier) + 1;
+    //     }
+    //     return numToReturn;
+    // }
+
+    const validateRGBValue = (colorValue, operator = 1, addition = 15) => {
+        if (colorValue >= 0 && colorValue <= 255) {
+            if (operator === -1) {
+                if (colorState > 0 && colorState <= 255) {
+                    if (colorValue < addition) {
+                        return setColorState(colorValue - 1);
+                    } else {
+                        return setColorState(colorValue + ((Math.floor(Math.random() * addition) + 1) * operator));
+                    }
+                }
+            } else if (operator === 1) {
+                if (colorState >= 0 && colorState < 255) {
+                    if (colorValue > (255 - addition)) {
+                        return setColorState(colorValue + 1);
+                    } else {
+                        return setColorState(colorValue + ((Math.floor(Math.random() * addition) + 1)));
+                    }
+                }
+            } else {
+                console.log("Multiplication operator is not 1 or -1");
+            }
         }
-        return numToReturn;
     }
 
 
@@ -38,9 +62,7 @@ const SquareDetail = ({ titleText, colorState, setColorState }) => {
                 <Pressable
                     style={styles.buttonStyle}
                     onPress={() => {
-                        if (colorState >= 0 && colorState < 255) {
-                            setColorState(colorState + doIncrements(colorState));
-                        }
+                        validateRGBValue(colorState);
                     }}
                 >
                     <Text style={styles.textSize}>More {buttonColorText}</Text>
@@ -48,9 +70,7 @@ const SquareDetail = ({ titleText, colorState, setColorState }) => {
                 <Pressable
                     style={styles.buttonStyle}
                     onPress={() => {
-                        if (colorState > 0 && colorState <= 255) {
-                            setColorState(colorState - doDecrements(colorState))
-                        }
+                        validateRGBValue(colorState, -1);
                     }}
                 >
                     <Text style={styles.textSize}>Less {buttonColorText}</Text>
