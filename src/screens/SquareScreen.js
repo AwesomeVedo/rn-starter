@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import { Text, Pressable, StyleSheet, View } from 'react-native';
 import SquareDetail from '../components/SquareDetail';
 

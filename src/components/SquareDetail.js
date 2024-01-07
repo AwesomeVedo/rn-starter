@@ -10,26 +10,6 @@ const SquareDetail = ({ titleText, colorState, setColorState }) => {
         //console.log('Color State Updated:' + titleText, colorState);
     }, [colorState]);
 
-    // const doIncrements = (num, multiplier = 15) => {
-    //     let numToReturn;
-    //     if (num > (255 - multiplier)) {
-    //         numToReturn = 1;
-    //     } else {
-    //         numToReturn = Math.floor(Math.random() * multiplier) + 1;
-    //     }
-    //     return numToReturn;
-    // }
-
-    // const doDecrements = (num, multiplier = 15) => {
-    //     let numToReturn;
-    //     if (num < multiplier) {
-    //         numToReturn = 1;
-    //     } else {
-    //         numToReturn = Math.floor(Math.random() * multiplier) + 1;
-    //     }
-    //     return numToReturn;
-    // }
-
     const validateRGBValue = (colorValue, operator = 1, addition = 15) => {
         if (colorValue >= 0 && colorValue <= 255) {
             if (operator === -1) {
