@@ -48,7 +48,7 @@ const CounterScreen = () => {
 
 const styles = StyleSheet.create({
     input: {
-        eight: 40,
+        height: 40,
         margin: 12,
         borderWidth: 1,
         padding: 10,

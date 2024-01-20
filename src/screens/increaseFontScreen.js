@@ -11,7 +11,7 @@ const increaseFontSize = () => {
 
     return (
         <View style={styles.parentView}>
-            <Text style={{width: '20%', display: 'block', fontSize: state.fontSize}}>Font Size: {state.fontSize} </Text>
+            <Text style={{width: '20%', fontSize: state.fontSize}}>Font Size: {state.fontSize} </Text>
             <Pressable
                 style={styles.buttonStyle}
                 onPress={() => {
